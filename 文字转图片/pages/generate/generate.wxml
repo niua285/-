@@ -1,0 +1,49 @@
+<view class="container" scroll-y="true">
+  <view class="canvas-container" style="width: 100%; height: auto; max-height: 80vh; overflow-y: auto;">
+    <canvas type="2d" 
+            id="textCanvas" 
+            style="width: {{imgWidth}}px; height: {{imgHeight}}px;"
+            class="text-canvas"
+            disable-scroll="{{true}}"
+            bindtouchstart="{{null}}"
+            bindtouchmove="{{null}}"
+            bindtouchend="{{null}}">
+    </canvas>
+  </view>
+  
+  <view class="controls">
+    <view class="control-group">
+      <text class="control-label">图片尺寸</text>
+      <view class="size-control">
+        <view class="size-input">
+          <input type="number" 
+                 value="{{imgWidth}}" 
+                 data-type="imgWidth"
+                 bindinput="adjustSizeInput"
+                 bindblur="adjustSizeBlur"
+                 placeholder="宽度"
+                 adjust-position="{{false}}"
+                 hold-keyboard="{{true}}"
+                 cursor-spacing="20"/>
+          <text>px</text>
+        </view>
+        <text style="color: #666; font-size: 28rpx;">×</text>
+        <view class="size-input">
+          <input type="number" 
+                 value="{{imgHeight}}" 
+                 data-type="imgHeight"
+                 bindinput="adjustSizeInput"
+                 bindblur="adjustSizeBlur"
+                 placeholder="高度"
+                 adjust-position="{{false}}"
+                 hold-keyboard="{{true}}"
+                 cursor-spacing="20"/>
+          <text>px</text>
+        </view>
+      </view>
+    </view>
+
+    <button wx:if="{{!hasPhotoAlbumAuth && showAuthButton}}" class="auth-btn" bindtap="requestAlbumAuth">授权保存到相册</button>
+    <button class="save-btn" bindtap="saveImage">保存图片</button>
+  </view>
+</view>

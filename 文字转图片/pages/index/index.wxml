@@ -1,0 +1,102 @@
+<view class="container">
+  <view class="input-section">
+    <view class="text-style-controls">
+      <view class="style-item {{textAlign === 'left' ? 'active' : ''}}" bindtap="setTextAlign" data-align="left">
+        <text>⇤</text>
+      </view>
+      <view class="style-item {{textAlign === 'center' ? 'active' : ''}}" bindtap="setTextAlign" data-align="center">
+        <text>⇔</text>
+      </view>
+      <view class="style-item {{textAlign === 'right' ? 'active' : ''}}" bindtap="setTextAlign" data-align="right">
+        <text>⇥</text>
+      </view>
+      <view class="style-item {{isBold ? 'active' : ''}}" bindtap="toggleBold">
+        <text>B</text>
+      </view>
+      <view class="style-item {{isItalic ? 'active' : ''}}" bindtap="toggleItalic">
+        <text>I</text>
+      </view>
+      <view class="style-item" bindtap="showColorPicker">
+        <text style="color: {{textColor}}">A</text>
+      </view>
+      <view class="style-item" bindtap="showFontPicker">
+        <text>Aa</text>
+      </view>
+    </view>
+
+    <textarea class="text-input" 
+              placeholder="请输入文字内容" 
+              value="{{content}}" 
+              bindinput="onInput" 
+              bindselect="onTextSelect"
+              maxlength="{{maxCharacterCount}}"
+              auto-height="true"
+              adjust-position="true"
+              show-confirm-bar="false"
+              style="text-align: {{textAlign}}; font-weight: {{isBold ? 'bold' : 'normal'}}; font-style: {{isItalic ? 'italic' : 'normal'}}; color: {{textColor}}; font-family: {{selectedFont}}; font-size: {{fontSize}}px; line-height: 1.5;">
+    </textarea>
+
+    <!-- 添加字数计数器 -->
+    <view class="char-counter">
+      <text>{{currentCharCount}}/{{maxCharacterCount}}</text>
+    </view>
+
+    <view class="font-size-control">
+      <text>字体大小</text>
+      <view class="font-size-input">
+        <input type="number" 
+               value="{{fontSize}}" 
+               bindinput="onFontSizeInput" 
+               min="12" 
+               max="72"
+               style="width: 100rpx; text-align: center;"
+               adjust-position="{{false}}"
+               hold-keyboard="{{true}}"
+               cursor-spacing="20"/>
+        <text>px</text>
+      </view>
+      <slider min="12" max="72" value="{{fontSize}}" show-value bindchange="onFontSizeChange" />
+    </view>
+
+    <button class="generate-btn" bindtap="generateImage">生成图片</button>
+  </view>
+
+  <!-- 删除预览效果区域代码 -->
+  <!-- 颜色选择器弹窗 -->
+  <view class="modal" wx:if="{{showColorPicker}}" bindtap="hideColorPicker">
+    <view class="modal-content" catchtap="stopPropagation">
+      <view class="modal-header">
+        <text>选择颜色</text>
+        <text class="close" bindtap="hideColorPicker">×</text>
+      </view>
+      <view class="color-grid">
+        <view wx:for="{{colors}}" wx:key="*this" 
+              class="color-item" 
+              style="background-color: {{item}}"
+              bindtap="selectColor" 
+              data-color="{{item}}">
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 字体选择器弹窗 -->
+  <view class="modal" wx:if="{{showFontPicker}}" bindtap="hideFontPicker">
+    <view class="modal-content" catchtap="stopPropagation">
+      <view class="modal-header">
+        <text>选择字体</text>
+        <text class="close" bindtap="hideFontPicker">×</text>
+      </view>
+      <view class="font-list">
+        <view wx:for="{{fonts}}" 
+              wx:key="*this" 
+              class="font-item {{selectedFont === item ? 'active' : ''}}"
+              style="font-family: {{item}}"
+              bindtap="selectFont" 
+              data-font="{{item}}">
+          {{item}}
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

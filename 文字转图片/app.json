@@ -1,0 +1,30 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/generate/generate"
+  ],
+  "window": {
+    "navigationBarTitleText": "文字转图片",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "settings": {
+    "urlCheck": false,
+    "es6": true,
+    "postcss": true,
+    "minified": true,
+    "miniprogram": {
+      "libVersion": "2.16.1",
+      "plugins": {}
+    },
+    "useCompilerPlugins": ["typescript"],
+    "checkInvalidKey": true
+  },
+  "permission": {
+    "scope.writePhotosAlbum": {
+      "desc": "保存图片到相册需要使用您的相册权限"
+    }
+  }
+}

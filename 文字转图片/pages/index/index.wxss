@@ -1,0 +1,495 @@
+/* 主题颜色变量 */
+:root {
+  --primary-color: #4338ca;
+  --secondary-color: #8b5cf6;
+  --accent-color: #2563eb;
+  --text-dark: #0f172a;
+  --text-light: #f1f5f9;
+}
+
+/* 容器样式 */
+.container {
+  padding: 20rpx;
+  background: #f8f9fa;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 输入卡片 */
+.input-card {
+  background: rgba(255,255,255,0.9);
+  border-radius: 24rpx;
+  padding: 24rpx;
+  box-shadow: 0 8rpx 24rpx rgba(0,0,0,0.08);
+  margin-bottom: 30rpx;
+}
+
+/* 输入框样式 */
+.input-box {
+  width: 100%;
+  min-height: 320rpx;
+  padding: 24rpx;
+  border-radius: 16rpx;
+  background: #fff;
+  border: 2rpx solid #e2e8f0;
+  font-size: 32rpx;
+  line-height: 1.6;
+  color: var(--text-dark);
+}
+
+/* 控制组样式 */
+.control-group {
+  background: #fff;
+  padding: 24rpx 32rpx;
+  border-radius: 16rpx;
+  margin: 24rpx 0;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.06);
+}
+
+/* 滑动条样式 */
+slider {
+  margin-top: 16rpx;
+}
+
+slider .wx-slider-track {
+  height: 8rpx;
+  background: #e2e8f0;
+}
+
+slider .wx-slider-handle {
+  width: 48rpx;
+  height: 48rpx;
+  background: var(--primary-color);
+  box-shadow: 0 4rpx 12rpx rgba(99,102,241,0.3);
+}
+
+/* 生成按钮 */
+.generate-btn {
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: linear-gradient(135deg, #007AFF 0%, #0056b3 100%);
+  color: #ffffff;
+  font-size: 32rpx;
+  border-radius: 40rpx;
+  margin-top: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 122, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.generate-btn:active {
+  transform: translateY(2rpx);
+  box-shadow: 0 2rpx 6rpx rgba(0, 122, 255, 0.2);
+}
+
+.input-section {
+  background: #ffffff;
+  border-radius: 24rpx;
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-header {
+  margin-bottom: 20rpx;
+}
+
+/* 优化字体排版 */
+.section-title {
+  font-size: 32rpx;
+  color: #475569;
+  margin-bottom: 20rpx;
+}
+.input-box {
+  font-size: 36rpx;
+}
+
+.text-style-controls {
+  display: flex;
+  justify-content: space-between;
+  padding: 16rpx 0;
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 20rpx;
+}
+
+.style-group {
+  display: flex;
+  gap: 10rpx;
+}
+
+.style-item {
+  width: 80rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16rpx;
+  background: #f8f9fa;
+  transition: all 0.3s ease;
+}
+
+.style-item text {
+  font-size: 36rpx;
+  color: #666;
+}
+
+.style-item.active {
+  background: #007AFF;
+}
+
+.style-item.active text {
+  color: #ffffff;
+}
+
+.color-picker {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 8rpx;
+  overflow: hidden;
+  border: 2rpx solid #ddd;
+  position: relative;
+}
+
+.color-picker .tooltip {
+  position: absolute;
+  bottom: -40rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 4rpx 12rpx;
+  border-radius: 4rpx;
+  font-size: 24rpx;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+}
+
+.color-picker:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+.color-preview {
+  width: 100%;
+  height: 100%;
+}
+
+.text-input {
+  width: 100%;
+  min-height: 400rpx;
+  max-height: 800rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  border: 1px solid #e9ecef;
+  border-radius: 16rpx;
+  line-height: 1.5;
+  margin: 0 0 20rpx;
+  display: block;
+  background: #f8f9fa;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  word-break: break-all;
+  overflow-y: auto;
+}
+
+.preview-section {
+  background: #ffffff;
+  border-radius: 24rpx;
+  padding: 32rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+  margin-top: 30rpx;
+}
+
+.preview-title {
+  display: block;
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 20rpx;
+}
+
+.preview-content {
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+  border-radius: 16rpx;
+  border: 1px solid #e9ecef;
+}
+
+.preview-text {
+  width: 90%;
+  max-width: 90%;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  text-align: inherit;
+  padding: 40rpx;
+  margin: 0 auto;
+  box-sizing: border-box;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.preview-text text {
+  width: 100%;
+  text-align: inherit;
+  display: block;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  word-break: break-all;
+  line-height: 1.5;
+}
+
+.font-size-section {
+  background: #fff;
+  border-radius: 12rpx;
+  padding: 16rpx;
+  margin-bottom: 16rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.05);
+}
+
+.font-size-control {
+  margin-top: 16rpx;
+}
+
+.font-size-control text {
+  display: block;
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 12rpx;
+}
+
+.font-size-input {
+  display: flex;
+  align-items: center;
+  margin: 20rpx 0;
+}
+
+.font-size-input input {
+  width: 120rpx;
+  height: 70rpx;
+  border: 1px solid #e9ecef;
+  border-radius: 12rpx;
+  padding: 0 20rpx;
+  margin-right: 16rpx;
+  text-align: center;
+  font-size: 28rpx;
+  background: #ffffff;
+}
+
+.font-size-input text {
+  font-size: 24rpx;
+  color: #666;
+  margin: 0;
+}
+
+.button-group {
+  margin-top: 30rpx;
+}
+
+.color-picker-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+}
+
+.color-picker-modal.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.color-picker-content {
+  background: #fff;
+  border-radius: 12rpx;
+  width: 80%;
+  max-width: 600rpx;
+  padding: 30rpx;
+}
+
+.color-picker-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.close-btn {
+  font-size: 40rpx;
+  color: #999;
+  padding: 10rpx;
+}
+
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20rpx;
+  padding: 32rpx;
+}
+
+.color-item {
+  width: 100%;
+  padding-bottom: 100%;
+  border-radius: 12rpx;
+  border: 1px solid #e9ecef;
+  position: relative;
+}
+
+.color-item.active::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  text-shadow: 0 0 4rpx rgba(0,0,0,0.5);
+}
+
+.font-picker-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+}
+
+.font-picker-modal.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.font-picker-content {
+  background: #fff;
+  border-radius: 12rpx;
+  width: 80%;
+  max-width: 600rpx;
+  padding: 30rpx;
+}
+
+.font-picker-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.font-list {
+  padding: 20rpx 32rpx;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.font-item {
+  padding: 24rpx;
+  font-size: 28rpx;
+  color: #333;
+  border-bottom: 1px solid #f0f0f0;
+  transition: all 0.3s ease;
+}
+
+.font-item:last-child {
+  border-bottom: none;
+}
+
+.font-item.active {
+  color: #007AFF;
+  background: #f8f9fa;
+  border-radius: 12rpx;
+}
+
+.font-item:active {
+  background: #f5f5f5;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  width: 80%;
+  background: #ffffff;
+  border-radius: 24rpx;
+  overflow: hidden;
+  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24rpx 32rpx;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.modal-header text {
+  font-size: 32rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+.modal-header .close {
+  font-size: 40rpx;
+  color: #999;
+  padding: 10rpx;
+}
+/* 优化元素布局 */
+.input-card {
+  margin-bottom: 30rpx;
+  padding: 24rpx;
+}
+.control-group {
+  margin: 20rpx 0;
+  padding: 20rpx;
+}
+
+.char-counter {
+  text-align: right;
+  padding: 5rpx 10rpx;
+  color: #666;
+  font-size: 24rpx;
+}
+
+.char-counter text {
+  margin-right: 10rpx;
+}
