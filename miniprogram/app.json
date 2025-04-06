@@ -1,0 +1,59 @@
+{
+  "pages": [
+    "pages/salary/salary",
+    "pages/analysis/analysis",
+    "pages/ranking/ranking",
+    "pages/profile/profile",
+    "pages/profile/edit/edit",
+    "pages/profile/manual-edit/manual-edit",
+    "pages/auth/auth"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "跑单计算器",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#1296db",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/salary/salary",
+        "text": "计算",
+        "iconPath": "/images/salary.png.png",
+        "selectedIconPath": "/images/salary.png.png"
+      },
+      {
+        "pagePath": "pages/analysis/analysis",
+        "text": "分析",
+        "iconPath": "/images/analysis.png.png",
+        "selectedIconPath": "/images/analysis.png.png"
+      },
+      {
+        "pagePath": "pages/ranking/ranking",
+        "text": "排行",
+        "iconPath": "/images/ranking.png.png",
+        "selectedIconPath": "/images/ranking.png.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "iconPath": "/images/profile.png.png",
+        "selectedIconPath": "/images/profile.png.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "requiredPrivateInfos": [
+    "chooseLocation"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "您的位置信息将用于显示您所在地区的排行榜"
+    }
+  }
+} 

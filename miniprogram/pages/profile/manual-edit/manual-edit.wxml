@@ -1,0 +1,27 @@
+<view class="container">
+  <view class="form-section">
+    <!-- 头像 -->
+    <view class="form-item">
+      <text class="form-label">头像</text>
+      <view class="avatar-upload" bindtap="chooseAvatar">
+        <image class="avatar" src="{{userInfo.avatarUrl || '/images/default-avatar.svg'}}" mode="aspectFill"></image>
+        <text class="upload-text">点击更换</text>
+      </view>
+    </view>
+
+    <!-- 昵称 -->
+    <view class="form-item">
+      <text class="form-label">昵称</text>
+      <input class="form-input" 
+             value="{{userInfo.nickName}}" 
+             placeholder="请输入昵称"
+             bindinput="onNicknameInput"/>
+    </view>
+  </view>
+
+  <!-- 按钮区域 -->
+  <view class="button-section">
+    <button class="save-btn" bindtap="saveProfile">保存修改</button>
+    <button class="logout-btn" bindtap="logout">退出登录</button>
+  </view>
+</view> 

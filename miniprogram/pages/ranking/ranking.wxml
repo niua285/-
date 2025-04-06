@@ -1,0 +1,65 @@
+<view class="container">
+  <!-- 排行榜内容 -->
+  <!-- 平台选择器 -->
+  <view class="platform-selector">
+    <picker bindchange="onPlatformChange" value="{{platformIndex}}" range="{{platforms}}">
+      <view class="picker">
+        <text>{{platforms[platformIndex]}}</text>
+        <text class="picker-arrow">▼</text>
+      </view>
+    </picker>
+  </view>
+
+  <!-- 维度选择器 -->
+  <view class="dimension-selector">
+    <view class="dimension-item {{currentDimension === 'hourly' ? 'active' : ''}}" bindtap="switchDimension" data-dimension="hourly">
+      时薪排行
+    </view>
+    <view class="dimension-item {{currentDimension === 'daily' ? 'active' : ''}}" bindtap="switchDimension" data-dimension="daily">
+      日薪排行
+    </view>
+  </view>
+
+  <!-- 排行榜 -->
+  <view class="ranking-list">
+    <view class="ranking-item" wx:for="{{rankings}}" wx:key="index">
+      <view class="rank-number">{{index + 1}}</view>
+      <view class="user-info">
+        <image class="avatar" src="{{item.avatarUrl || '/images/default-avatar.png'}}" mode="aspectFill"></image>
+        <view class="user-details">
+          <view class="user-name">{{item.nickName || '匿名用户'}}</view>
+          <view class="user-detail">
+            <text class="location" wx:if="{{item.location}}">{{item.location}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="salary-info">
+        <view class="salary-amount">
+          <text class="amount">{{currentDimension === 'hourly' ? item.averageHourly : item.averageDaily}}</text>
+          <text class="unit">元/{{currentDimension === 'hourly' ? '小时' : '天'}}</text>
+        </view>
+        <view class="work-days">共{{item.totalDays || 0}}天</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 用户排名提醒 -->
+  <view class="user-rank-reminder" wx:if="{{currentUserRank > 0}}">
+    <view class="reminder-content">
+      <text class="rank-text">您当前排名第 {{currentUserRank}} 名</text>
+      <text class="salary-text" wx:if="{{currentDimension === 'hourly'}}">时薪: ¥{{userRankInfo.averageHourly}}/h</text>
+      <text class="salary-text" wx:else>日薪: ¥{{userRankInfo.averageDaily}}/天</text>
+    </view>
+  </view>
+
+  <!-- 加载更多 -->
+  <view class="load-more" wx:if="{{hasMore}}">
+    <view class="load-more-btn" bindtap="loadMore">加载更多</view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{rankings.length === 0}}">
+    <image class="empty-icon" src="/images/empty.svg" mode="aspectFit"></image>
+    <view class="empty-text">暂无排行榜数据</view>
+  </view>
+</view> 

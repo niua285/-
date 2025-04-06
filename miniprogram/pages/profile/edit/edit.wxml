@@ -1,0 +1,86 @@
+<view class="container">
+  <view class="form-section">
+    <!-- 头像 -->
+    <view class="form-item">
+      <text class="form-label">头像</text>
+      <view class="avatar-upload" bindtap="chooseAvatar">
+        <image class="avatar" src="{{userInfo.avatarUrl || '/images/default-avatar.svg'}}" mode="aspectFill"></image>
+        <text class="upload-text">点击更换</text>
+      </view>
+    </view>
+
+    <!-- 昵称 -->
+    <view class="form-item">
+      <text class="form-label">昵称</text>
+      <input class="form-input" 
+             value="{{userInfo.nickName}}" 
+             placeholder="请输入昵称"
+             bindinput="onNicknameInput"/>
+    </view>
+
+    <!-- 性别 -->
+    <view class="form-item">
+      <text class="form-label">性别</text>
+      <radio-group class="gender-group" bindchange="onGenderChange">
+        <label class="gender-item">
+          <radio value="1" checked="{{userInfo.gender === 1}}"/>男
+        </label>
+        <label class="gender-item">
+          <radio value="2" checked="{{userInfo.gender === 2}}"/>女
+        </label>
+      </radio-group>
+    </view>
+
+    <!-- 生日 -->
+    <view class="form-item">
+      <text class="form-label">生日</text>
+      <picker mode="date" 
+              value="{{userInfo.birthday}}" 
+              start="1900-01-01" 
+              end="2020-12-31" 
+              bindchange="onBirthdayChange">
+        <view class="picker-value">
+          {{userInfo.birthday || '请选择生日'}}
+        </view>
+      </picker>
+    </view>
+
+    <!-- 地区选择 -->
+    <view class="form-item">
+      <view class="form-label">所在地区</view>
+      <view class="picker-value" bindtap="chooseLocation">
+        {{userInfo.location || '点击选择地区'}}
+      </view>
+      <view class="form-tip">选择您所在的地区，用于显示地区排行榜</view>
+    </view>
+
+    <!-- 工作类型 -->
+    <view class="form-item">
+      <text class="form-label">工作类型</text>
+      <picker bindchange="onWorkTypeChange" 
+              value="{{workTypeIndex}}" 
+              range="{{workTypes}}">
+        <view class="picker-value">
+          {{workTypes[workTypeIndex]}}
+        </view>
+      </picker>
+    </view>
+
+    <!-- 工作经验 -->
+    <view class="form-item">
+      <text class="form-label">工作经验</text>
+      <picker bindchange="onExperienceChange" 
+              value="{{experienceIndex}}" 
+              range="{{experiences}}">
+        <view class="picker-value">
+          {{experiences[experienceIndex]}}
+        </view>
+      </picker>
+    </view>
+  </view>
+
+  <!-- 保存按钮 -->
+  <view class="save-section">
+    <button class="save-btn" bindtap="saveProfile">保存</button>
+  </view>
+</view> 

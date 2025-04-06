@@ -1,0 +1,60 @@
+<view class="container">
+  <!-- 用户信息卡片 -->
+  <view class="user-card">
+    <view class="user-info">
+      <image class="avatar" src="{{userInfo.avatarUrl || '/images/default-avatar.svg'}}" mode="aspectFill"></image>
+      <view class="user-details">
+        <view class="nickname">{{userInfo.nickName || '未登录'}}</view>
+        <view class="login-btn" wx:if="{{!userInfo.nickName}}" bindtap="getUserProfile">点击登录</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 今日概览 -->
+  <view class="overview-section">
+    <view class="section-title">今日概览</view>
+    <view class="overview-grid">
+      <view class="overview-item">
+        <text class="overview-value">{{todayHours}}</text>
+        <text class="overview-label">工作时长</text>
+      </view>
+      <view class="overview-item">
+        <text class="overview-value">¥{{todayEarnings}}</text>
+        <text class="overview-label">今日收入</text>
+      </view>
+      <view class="overview-item">
+        <text class="overview-value">{{todayOrders}}</text>
+        <text class="overview-label">订单数</text>
+      </view>
+      <view class="overview-item">
+        <text class="overview-value">¥{{todayHourlyRate}}</text>
+        <text class="overview-label">平均时薪</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 收入趋势 -->
+  <view class="trend-section">
+    <view class="section-title">收入趋势</view>
+    <view class="trend-chart">
+      <canvas type="2d" id="trendChart" class="trend-canvas"></canvas>
+    </view>
+  </view>
+
+  <!-- 平台对比 -->
+  <view class="platform-section">
+    <view class="section-title">平台对比</view>
+    <view class="platform-list">
+      <view class="platform-item" wx:for="{{platformStats}}" wx:key="platform">
+        <view class="platform-info">
+          <text class="platform-name">{{item.platform}}</text>
+          <text class="platform-days">{{item.days}}天</text>
+        </view>
+        <view class="platform-earnings">
+          <text class="earnings-value">¥{{item.earnings}}</text>
+          <text class="earnings-average">日均¥{{item.average}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view> 
